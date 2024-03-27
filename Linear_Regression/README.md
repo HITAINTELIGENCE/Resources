@@ -31,6 +31,8 @@ $$
 $$
 J(\mathbf{w}) = \frac{1}{2m}\sum_{i=1}^N (\mathbf{w}\mathbf{x_i} + b - y_i)^2
 $$
+
+
 ![](/Linear_Regression/lossandcost.png)
 
 - **Chú ý**
