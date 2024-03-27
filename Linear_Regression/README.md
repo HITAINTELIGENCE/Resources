@@ -18,7 +18,7 @@ $$
 \mathbf{y} = \mathbf{w}X + b
 $$
 
-<img title="Representation of Linear Reagression" src = "Linear Regression\linearregression.png">
+![](/Linear_Regression/linearregression.png)
 
 ## Cost function
 
@@ -31,8 +31,7 @@ $$
 $$
 J(\mathbf{w}) = \frac{1}{2m}\sum_{i=1}^N (\mathbf{w}\mathbf{x_i} + b - y_i)^2
 $$
-
-<img src = "Linear Regression\lossandcost.png">
+![](/Linear_Regression/lossandcost.png)
 
 - **Chú ý**
     
