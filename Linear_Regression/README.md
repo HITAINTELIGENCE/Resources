@@ -1,6 +1,6 @@
 1. Các bạn hoàn thành các yêu cầu trong file .ipynb nhé
 2. Dưới đây là cơ sở lý thuyết của Linear Regression
-3. Các bạn có thể xem bản khác trên Notion: [Notion](https://www.notion.so/Linear-Regression-548811eecad34786be09c461770671b3?pvs=4)
+3. Các bạn có thể xem bản khác trên Notion: [Notion](https://tremendous-chili-4f0.notion.site/230be7626d5546d98f4233101167f311?v=895892aa08d94361b5c95f312eb42db1)
 # Linear Regression
 
 - Ý nghĩa của tên Linear Regression
