@@ -13,7 +13,7 @@
     $$ 
         y = log(x) 
     $$
-    ![](/Polynomial_Regression/Code/log_x.jpg)
+![](/Polynomial_Regression/Code/log_x.jpg)
 
     $$
         y = x^3 + 5x^2 + 2x + 5
