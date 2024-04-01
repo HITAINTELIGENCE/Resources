@@ -10,9 +10,10 @@
 - Đối với các bài toán có mối quan hệ giữa các feature và label không phải tuyến tính, chúng ta không thể biểu diễn bằng đường thẳng.
 - Trong toán học chúng ta cũng gặp nhiều trường hợp về các hàm số không có tính tuyến tính như $sin(x)$, $cos(x)$, $log(x)$, ... hay các đa thức bậc cao có chứa các thành phần như $x^4$, $x^3$, $x^2$,..., hãy xem các ví dụ dưới đây
 
-$$ y = log(x) $$
+$$y = log(x)$$
 
 ![](/Polynomial_Regression/log_x.png)
+
 $$ y = x^3 + 5x^2 + 2x + 5$$
 
 ![](/Polynomial_Regression/polynomial_vis.png)
