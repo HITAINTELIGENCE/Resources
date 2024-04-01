@@ -4,7 +4,7 @@
 ## Khái niệm
 - Polynomial Regression là một dạng thuật toán đặc biệt của Linear Regression nhưng mối quan hệ giữa các feature và label không phải dạng tuyến tính.
 - Polynomial Regression vẫn là dạng thuật toán Regression, nhưng phù hợp để fit với các dạng dữ liệu dạng đường cong.
-    ![](/Polynomial_Regression/polynomial.png)
+    ![](/Polynomial_Regression/Code/polynomial.png)
 
 ## Non Linear Relationship Problem
 - Đối với các bài toán có mối quan hệ giữa các feature và label không phải tuyến tính, chúng ta không thể biểu diễn bằng đường thẳng.
