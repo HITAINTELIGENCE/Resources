@@ -4,7 +4,7 @@
 
 ## Ôn tập các khái niệm cơ bản
 
-![](/Gradient_Descent/gradient_descent.png)
+![](/Gradient_Descent/Image/gradient_descent.png)
 
 - Cực trị của hàm số là giá trị khiến cho hàm số đổi chiều khi biến thiên.
 - Điểm cực tiểu là một điểm trên đồ thị của một hàm số mà giá trị của hàm số tại điểm đó nhỏ nhất so với các giá trị xung quanh. Trong học máy, chúng ta sẽ sử dụng thuật ngữ local minimum thay thế cho "điểm cực tiểu".
@@ -32,9 +32,9 @@
 - Hướng tiếp cận của **Gradient Descent** là sẽ xuất phát từ một điểm mà chúng ta cho là *gần* với nghiệm của bài toán, sau đó tiến dần đến điểm cần tìm, tức đến khi gradient gần với 0.
 - Dưới đây là các hình ảnh về việc tối ưu tham số của thuật toán GD:
 
-![](/Gradient_Descent/GD_one_variable.png)
+![](/Gradient_Descent/Image/GD_one_variable.png)
 
-![](/Gradient_Descent/GD_var_variables.png)
+![](/Gradient_Descent/Image/GD_var_variables.png)
 
 ## Công thức cập nhật
 $$
@@ -49,9 +49,9 @@ Trong đó:
 ### Điểm khởi tạo
 - Việc lựa chọn điểm khởi tạo ban đầu cũng sẽ ảnh hưởng đến tốc độ học của mô hình.
 
-![](/Gradient_Descent/1dimg_5_0.1_-5.gif)
+![](/Gradient_Descent/Image/1dimg_5_0.1_-5.gif)
 
-![](/Gradient_Descent/1dimg_5_0.1_5.gif)
+![](/Gradient_Descent/Image/1dimg_5_0.1_5.gif)
 
 ### Learning rate
 - Việc chúng ta lựa chọn learning rate (hay tốc độ học) sẽ ảnh hưởng đến tốc độ hội tụ của thuật toán.
@@ -60,22 +60,22 @@ Trong đó:
 - Nếu như learning rate quá lớn, tốc độ hội tụ sẽ nhanh hơn nhưng sẽ khiến mô hình khó hội tụ tại global minimum.
 - Chúng ta cần thử nghiệm nhiều lần để thu được learning rate phù hợp nhất cho thuật toán.
 
-![](/Gradient_Descent/1dimg_5_0.01_-5.gif)
+![](/Gradient_Descent/Image/1dimg_5_0.01_-5.gif)
 
-![](/Gradient_Descent/1dimg_5_0.5_-5.gif)
+![](/Gradient_Descent/Image/1dimg_5_0.5_-5.gif)
 
 ## Large Dataset và Online Learning
 
 - **Online Learning** là hình thức học khi mà bộ cơ sở dữ liệu được cập nhật liên tục, khiến mô hình phải thay đổi liên tục để phù hợp với bộ dữ liệu.
 
-![](/Gradient_Descent/online_learning.png)
+![](/Gradient_Descent/Image/online_learning.png)
 
 - Khi mà bộ dữ liệu lớn, việc sử dụng toàn bộ dữ liệu cho mỗi lần cập nhật **w** trong quá trình huấn luyện sẽ gây ảnh hưởng đến thời gian huấn luyện và tốn kém về mặt chi phí tính toán. Điều này sẽ không phù hợp với các bài toán *Online Learning*.
 
 - Chúng ta có thể giải quyết vấn đề này bằng cách sử dụng một phần của bộ dữ liệu trong mỗi lần cập nhật, qua cách sử dụng khái niệm là **batch size**, và với các kiểu chọn bacth size khác nhau chúng ta lại có các biến thể của **Gradient Descent**.
 
 ## Biến thể của Gradient Descent
-![](/Gradient_Descent/variant_gradient_descent.png)
+![](/Gradient_Descent/Image/variant_gradient_descent.png)
 Trước tiên, chúng ta cần đi qua các khái niệm được sử dụng trong phần này:
 
 - Trong **Machine Learning**, **Parameter** là tham số tối ưu của mô hình sau khi đã trải qua quá trình huấn luyện. **Hyperparameter** hay siêu tham số là các tham số được chúng ta lựa chọn sau những lần huấn luyện thử nghiệm.
