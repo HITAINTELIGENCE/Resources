@@ -4,7 +4,7 @@
 
 ## Ôn tập các khái niệm cơ bản
 
-![](/Gradient_Descent/Image/gradient_descent.png)
+![](/Gradient_Descent/Image/cuc_tri.png)
 
 - Cực trị của hàm số là giá trị khiến cho hàm số đổi chiều khi biến thiên.
 - Điểm cực tiểu là một điểm trên đồ thị của một hàm số mà giá trị của hàm số tại điểm đó nhỏ nhất so với các giá trị xung quanh. Trong học máy, chúng ta sẽ sử dụng thuật ngữ local minimum thay thế cho "điểm cực tiểu".
