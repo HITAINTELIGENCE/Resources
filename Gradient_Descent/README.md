@@ -115,3 +115,117 @@ Trước tiên, chúng ta cần đi qua các khái niệm được sử dụng t
     - Nên bắt đầu với batch size mặc định là 32 và sau đó thử các giá trị khác nếu không hài lòng với giá trị mặc định.
     - Nên bắt đầu với batch size nhỏ trước.
     - Có một mối tương quan giữa batch size và learning rate. Khi learning rate cao, batch size lớn hơn cho kết quả tốt hơn và ngược lại. (Đọc thêm về mối quan hệ giữa learning rate và batch size: [Relation between learning rate and batch size](https://www.baeldung.com/cs/learning-rate-batch-size))
+
+## Vanishing Gradient and Exploding Gradient
+
+## Tối ưu Gradient Descent
+### Momentum
+- Với việc sử dụng Gradient Descent thông thường, là việc chỉ sử dụng learning rate và gradient để cập nhật trọng số nhiều lúc sẽ dẫn đến trường hợp nghiệm minimum mà chúng ta không mong muốn. Hãy nhìn hình dưới đây.
+
+![](/Gradient_Descent/Image/momentum.png)
+
+- Trong hình trên có hai điểm minimum, nơi đạo hàm bằng 0, nếu như điểm khởi tạo được đặt như trong hình, sẽ khiến cho nó di chuyển xuống và dừng lại tại một điểm không phải nghiệm tối ưu. Điều này khiến cho việc học trì trệ và dừng lại.
+
+- Để giải quyết được vấn đề này, chúng ta sử dụng một kỹ thuật tối ưu gradient descent là momentum.
+
+- Ý tưởng cơ bản của momentum trong thực tế là việc chúng ta đặt một viên bi ở một mặt của thung lũng và cho nó rơi xuống các hố ở dưới thung lũng. Như ở hình dưới khi bị rơi xuống local minimum B không mong muốn thì viên bi vẫn duy trì được động lượng và vượt qua dốc để rơi xuống global minumum C.
+
+![](/Gradient_Descent/Image/momentum_GD.png)
+### Công thức
+- Hãy tưởng tưởng rằng đồ thị trên chính là đồ thị của một hàm số với biến là vận tốc của viên bi.
+- Gọi $v_{t}$ là vận tốc của viên bi tại thời điểm hiện tại.
+- Gradient Descent với Momentum đơn giản chỉ là chúng ta duy trì được vận tốc $v_{t - 1}$, vận tốc tại thời điểm trước đó.
+- Chúng ta có công thức cập nhật sau:
+    $$
+        v_{t} = γv_{t-1} + η∇_{θ}J(θ)
+    $$
+Trong đó, chúng ta có:
+    - $v_{t}$: tốc độ của viên bi tại thời điểm hiện tại
+    - $γ$: Hệ số Momentum
+    - $v_{t-1}$: vận tốc tại thời điểm trước đó
+    - $η$: Learning rate
+    - $∇_{θ}J(θ)$: gradient tại thời điểm hiện tại
+
+    Tổng quan ta lại có công thức cập nhật:
+    $$   
+        \mathbf{w_{t+1}} = \mathbf{w_t} - v_t
+    $$
+
+- Một cách khác là chúng ta có thể cập nhật với EMA, cơ bản ý tưởng là giống Momentum, chỉ đổi cách viết.
+
+$$
+    v_t = \beta v_{t-1} + (1 - \beta) \nabla_{\mathbf{w}} J(\mathbf{w}_{t})
+$$
+
+$$
+    \mathbf{w_{t+1}} = \mathbf{w_t} - \eta v_t
+$$
+
+- Video tham khảo: [DeepLearning.AI](https://www.youtube.com/watch?v=k8fTYJPd3_I)
+
+### Cách chọn $\beta$
+Tổng quát công thức tính $v$ ở trên ta được:
+
+1. Với cách 1
+    
+    $$
+    v(n) = (1-\beta)\sum_{t=1}^{n}{\beta^{n-t}J(\mathbf{w}_{t})}
+    $$
+    
+2. Với cách 2
+    
+    $$
+    v(n) = \eta\sum_{t=1}^{n}{\beta^{n-t}J(\mathbf{w}_{t})}
+    $$
+    
+
+Xét giá trị $\beta$ với $n=3$:
+
+- Với $\beta=0.1$ : gradient tại t=3 sẽ giữ 100% giá trị của nó, t=2 sẽ giữ 10% giá trị của nó và gradient ở t=1 sẽ giữ 1% giá trị của nó.
+- Với $\beta=0.9$: gradient tại t=3 sẽ giữ 100% giá trị của nó, t=2 sẽ giữ 90% giá trị của nó và gradient ở t=1 sẽ giữ 81% giá trị của nó.
+
+Từ trên, chúng ta có thể suy luận rằng $\beta$ cao hơn sẽ giữ được nhiều giá trị past gradient. Do đó, $\beta$ thường được giữ quanh mức $0.9$ trong hầu hết các trường hợp.
+### So Sánh GD và GD với momentum
+
+![](/Gradient_Descent/Image/vanilla_gd.png)
+
+- Với phương pháp tối ưu momentum, chúng ta có thể thấy rằng thuật toán ít dao động hơn việc này giúp cho nghiệm của chúng ta sẽ ít khả năng rơi vào các local minimum.
+- Việc cập nhật trọng số cũng diễn ra nhanh chóng hơn, đường đi thẳng.
+
+## Nesterov accelerated gradient
+
+- Momentum giúp vượt qua các điểm local minimum, tuy nhiên, có một hạn chế chúng ta có thể thấy trong ví dụ trên. Khi tới gần đích, momemtum vẫn mất khá nhiều thời gian trước khi dừng lại. Lý do lại cũng chính là vì có động lượng. Xem ví dụ bên dưới:
+
+![](/Gradient_Descent/Image/NAG_ex.png)
+
+- Có thể thấy update ở 1, 2, 3 tăng dần do có momentum, nhưng đến điểm 4 thì update lại nhảy khá xa và phải mất thêm 2 lần nhảy lữa mới tới điểm tối ưu.
+
+- NAG sinh ra để khắc phục vấn đề này. Có thể nói với momentum là **nhìn về quá khứ** thì NAG sẽ nhìn về **phía trước** trước khi nhảy.
+
+![](/Gradient_Descent/Image/NAG_apply.png)
+
+- Thay vì sử dụng gradient của điểm hiện tại, NAG *đi trước một bước*, sử dụng gradient của điểm tiếp theo.
+
+- Như ở hình trên NAG gradient tại điểm $\mathbf{w}_{look\_ahead}$ để tính bước nhảy tiếp theo. Giúp thuật toán hội tụ nhanh hơn.
+
+- Công thức cập nhật:
+
+    $$
+    \mathbf{w}_{look\_ahead} = \mathbf{w}_{t} - \beta v_{t-1}
+    $$
+
+    $$
+    v_t = \beta v_{t-1} + (1 - \beta) \nabla_{\mathbf{w}} J(\mathbf{w}_{look\_ahead})
+    $$
+
+    $$
+    \mathbf{w_{t+1}} = \mathbf{w_t} - \eta v_t
+    $$
+
+## Các thuật toán khác
+
+![](/Gradient_Descent/Image/table.png)
+
+- Cách thuật toán khác có thể thử nghiệm qua Pytorch: [torch.optim](https://pytorch.org/docs/stable/optim.html#algorithms).
+
+# Updating...
