@@ -116,8 +116,6 @@ Trước tiên, chúng ta cần đi qua các khái niệm được sử dụng t
     - Nên bắt đầu với batch size nhỏ trước.
     - Có một mối tương quan giữa batch size và learning rate. Khi learning rate cao, batch size lớn hơn cho kết quả tốt hơn và ngược lại. (Đọc thêm về mối quan hệ giữa learning rate và batch size: [Relation between learning rate and batch size](https://www.baeldung.com/cs/learning-rate-batch-size))
 
-## Vanishing Gradient and Exploding Gradient
-
 ## Tối ưu Gradient Descent
 ### Momentum
 - Với việc sử dụng Gradient Descent thông thường, là việc chỉ sử dụng learning rate và gradient để cập nhật trọng số nhiều lúc sẽ dẫn đến trường hợp nghiệm minimum mà chúng ta không mong muốn. Hãy nhìn hình dưới đây.
@@ -134,19 +132,21 @@ Trước tiên, chúng ta cần đi qua các khái niệm được sử dụng t
 ### Công thức
 - Hãy tưởng tưởng rằng đồ thị trên chính là đồ thị của một hàm số với biến là vận tốc của viên bi.
 - Gọi $v_{t}$ là vận tốc của viên bi tại thời điểm hiện tại.
-- Gradient Descent với Momentum đơn giản chỉ là chúng ta duy trì được vận tốc $v_{t - 1}$, vận tốc tại thời điểm trước đó.
-- Chúng ta có công thức cập nhật sau:
+- Gradient Descent với Momentum đơn giản chỉ là chúng ta duy trì được vận tốc $v_{t - 1}$, vận tốc tại thời điểm trước đó. Chúng ta có công thức cập nhật sau:
+
     $$
-        v_{t} = γv_{t-1} + η∇_{θ}J(θ)
+    v_{t} = γv_{t-1} + η∇_{θ}J(θ)
     $$
-Trong đó, chúng ta có:
+
+- Trong đó, chúng ta có:
     - $v_{t}$: tốc độ của viên bi tại thời điểm hiện tại
     - $γ$: Hệ số Momentum
     - $v_{t-1}$: vận tốc tại thời điểm trước đó
     - $η$: Learning rate
     - $∇_{θ}J(θ)$: gradient tại thời điểm hiện tại
 
-    Tổng quan ta lại có công thức cập nhật:
+- Tổng quan ta lại có công thức cập nhật:
+
     $$   
         \mathbf{w_{t+1}} = \mathbf{w_t} - v_t
     $$
