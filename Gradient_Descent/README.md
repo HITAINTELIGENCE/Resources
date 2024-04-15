@@ -207,10 +207,10 @@ Từ trên, chúng ta có thể suy luận rằng $\beta$ cao hơn sẽ giữ đ
 
 - Thay vì sử dụng gradient của điểm hiện tại, NAG *đi trước một bước*, sử dụng gradient của điểm tiếp theo.
 
-- Như ở hình trên NAG gradient tại điểm $\mathbf{w}_{look\_ahead}$ để tính bước nhảy tiếp theo. Giúp thuật toán hội tụ nhanh hơn. Chúng ta cps công thức cập nhật như sau: $$ w_{look\_ahead} = w_{t} - \beta v_{t-1} $$
+- Như ở hình trên NAG gradient tại điểm $\mathbf{w}_{lookahead}$ để tính bước nhảy tiếp theo. Giúp thuật toán hội tụ nhanh hơn. Chúng ta cps công thức cập nhật như sau: 
 
-$$
-    v_t = \beta v_{t-1} + (1 - \beta) \nabla_{\mathbf{w}} J(\mathbf{w}_{look\_ahead})
+$$ 
+    w_{lookahead} = w_{t} - \beta v_{t-1} 
 $$
 
 $$
