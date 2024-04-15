@@ -17,10 +17,7 @@
 - Việc tìm  weight sao cho loss function là minimum có thể được thực hiện theo hai cách phổ biến như sau:
     - Tìm nghiệm của đạo hàm, nhưng đa số cách này trở nên bất khả thi trong đa số các trường hợp vì đạo hàm có thể có rất nhiều nghiệm (local minimum) nên việc tìm ra giá trị nhỏ nhất (global minimum) sẽ rất khó khăn, một lý do khác là đạo hàm có thể vô nghiệm hoặc rất phức tạp để tính toán.
 
-    - VD: Tìm cực trị cho hàm số sau
-    $$
-        f(x)= x^3 − 6x^2 + 11x − 6
-    $$
+    - Ví dụ hãy tìm cực trị cho hàm số sau $f(x)= x^3 − 6x^2 + 11x − 6$
 
     -  Gradient Descent, đây là ý tưởng lấy từ việc học của con người. Ý tưởng cơ bản của thuật toán là chọn một điểm mà chúng ta là gần với nghiệm của bài toán, sau đó dùng phép toán lặp để tiến dần đến điểm cần tìm, tức đến gần gradient bằng 0.
 
@@ -37,9 +34,11 @@
 ![](/Gradient_Descent/Image/GD_var_variables.png)
 
 ## Công thức cập nhật
+
 $$
     \mathbf{w}_{t+1} = \mathbf{w}_{t} - \eta \nabla_{\mathbf{w}} J(\mathbf{w}_{t})
 $$
+
 Trong đó:
 - $\nabla_{\mathbf{w}} J(\mathbf{w}_{t})$ là đạo hàm riêng của hàm cost
 - $\eta$ là learning rate, đây là đại lương dương thể hiện tốc độ học của thuật toán.
@@ -75,7 +74,9 @@ Trong đó:
 - Chúng ta có thể giải quyết vấn đề này bằng cách sử dụng một phần của bộ dữ liệu trong mỗi lần cập nhật, qua cách sử dụng khái niệm là **batch size**, và với các kiểu chọn bacth size khác nhau chúng ta lại có các biến thể của **Gradient Descent**.
 
 ## Biến thể của Gradient Descent
+
 ![](/Gradient_Descent/Image/variant_gradient_descent.png)
+
 Trước tiên, chúng ta cần đi qua các khái niệm được sử dụng trong phần này:
 
 - Trong **Machine Learning**, **Parameter** là tham số tối ưu của mô hình sau khi đã trải qua quá trình huấn luyện. **Hyperparameter** hay siêu tham số là các tham số được chúng ta lựa chọn sau những lần huấn luyện thử nghiệm.
@@ -134,9 +135,9 @@ Trước tiên, chúng ta cần đi qua các khái niệm được sử dụng t
 - Gọi $v_{t}$ là vận tốc của viên bi tại thời điểm hiện tại.
 - Gradient Descent với Momentum đơn giản chỉ là chúng ta duy trì được vận tốc $v_{t - 1}$, vận tốc tại thời điểm trước đó. Chúng ta có công thức cập nhật sau:
 
-    $$
+$$
     v_{t} = γv_{t-1} + η∇_{θ}J(θ)
-    $$
+$$
 
 - Trong đó, chúng ta có:
     - $v_{t}$: tốc độ của viên bi tại thời điểm hiện tại
@@ -147,9 +148,9 @@ Trước tiên, chúng ta cần đi qua các khái niệm được sử dụng t
 
 - Tổng quan ta lại có công thức cập nhật:
 
-    $$   
-        \mathbf{w_{t+1}} = \mathbf{w_t} - v_t
-    $$
+$$   
+    \mathbf{w_{t+1}} = \mathbf{w_t} - v_t
+$$
 
 - Một cách khác là chúng ta có thể cập nhật với EMA, cơ bản ý tưởng là giống Momentum, chỉ đổi cách viết.
 
@@ -168,15 +169,15 @@ Tổng quát công thức tính $v$ ở trên ta được:
 
 1. Với cách 1
     
-    $$
+$$
     v(n) = (1-\beta)\sum_{t=1}^{n}{\beta^{n-t}J(\mathbf{w}_{t})}
-    $$
+$$
     
 2. Với cách 2
     
-    $$
+$$
     v(n) = \eta\sum_{t=1}^{n}{\beta^{n-t}J(\mathbf{w}_{t})}
-    $$
+$$
     
 
 Xét giá trị $\beta$ với $n=3$:
@@ -210,17 +211,17 @@ Từ trên, chúng ta có thể suy luận rằng $\beta$ cao hơn sẽ giữ đ
 
 - Công thức cập nhật:
 
-    $$
+$$
     \mathbf{w}_{look\_ahead} = \mathbf{w}_{t} - \beta v_{t-1}
-    $$
+$$
 
-    $$
+$$
     v_t = \beta v_{t-1} + (1 - \beta) \nabla_{\mathbf{w}} J(\mathbf{w}_{look\_ahead})
-    $$
+$$
 
-    $$
+$$
     \mathbf{w_{t+1}} = \mathbf{w_t} - \eta v_t
-    $$
+$$
 
 ## Các thuật toán khác
 
