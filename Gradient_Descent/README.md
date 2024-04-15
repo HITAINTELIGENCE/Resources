@@ -36,7 +36,7 @@
 ## Công thức cập nhật
 
 $$
-    \mathbf{w}_{t+1} = \mathbf{w}_{t} - \eta \nabla_{\mathbf{w}} J(\mathbf{w}_{t})
+    w_{t+1} = w_t - \eta \nabla_w J(w_t)
 $$
 
 Trong đó:
@@ -212,7 +212,7 @@ Từ trên, chúng ta có thể suy luận rằng $\beta$ cao hơn sẽ giữ đ
 - Công thức cập nhật:
 
 $$
-    \mathbf{w}_{look\_ahead} = \mathbf{w}_{t} - \beta v_{t-1}
+    {w}_{look\_ahead} = {w}_{t} - \beta v_{t-1}
 $$
 
 $$
